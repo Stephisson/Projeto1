@@ -12,8 +12,8 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Endereco implements Serializable{
-	
+public class Endereco implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -25,10 +25,15 @@ public class Endereco implements Serializable{
 	private String bairro;
 	private String cep;
 	
-	@JsonIgnore //o endereco não precisa sabe que é o aluno para o Json, isso vai acontecer na classe Aluno.
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="aluno_id")
 	private Aluno aluno;
+	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="usuario_id")
+	private Usuario usuario;
 	
 	@ManyToOne
 	@JoinColumn(name="cidade_id")
@@ -90,6 +95,14 @@ public class Endereco implements Serializable{
 		this.aluno = aluno;
 	}
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	public Cidade getCidade() {
 		return cidade;
 	}
@@ -103,5 +116,4 @@ public class Endereco implements Serializable{
 	}
 	
 	
-
 }

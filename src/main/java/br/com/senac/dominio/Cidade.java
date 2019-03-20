@@ -11,8 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Cidade implements Serializable{
-	
+public class Cidade implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -24,36 +24,33 @@ public class Cidade implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="estado_id")
 	private Estado estado;
-	
+
 	public Integer getId() {
 		return id;
-		
 	}
-	
+
 	public void setId(Integer id) {
-		this.id =id;
-		
+		this.id = id;
 	}
-	
+
 	public String getNome() {
 		return nome;
-		
 	}
-	
+
 	public void setNome(String nome) {
 		this.nome = nome;
-		
 	}
-	
+
 	public Estado getEstado() {
 		return estado;
-		
 	}
-	
+
 	public void setEstado(Estado estado) {
 		this.estado = estado;
-		
 	}
-	
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+		
 }
