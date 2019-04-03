@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Cursos</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong>Categorias</strong>
+		</div>
+		<div class="panel-body">
+			<div class="table-responsive">
+				<table class="table table-sm table-striped table-hover table-bordered">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Curso</th>
+						<th>Descrição</th>
+						<th>Preço</th>
+						<th>Categoria</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="curs : ${cursos}">
+						<td th:text="${curs.id}"></td>
+						<td th:text="${curs.nome}"></td>
+						<td th:text="${curs.descricao}"></td>
+						<td th:text="${'R$: ' + curs.preco}"></td>
+						<td><span th:each=" cat : ${curs.categorias}" th:text="${' ' + cat.no me + ' / '}"></span></td>
+						<td>
+							<div class="btn-group pull-right">
+								<a class="btn btn-sm btn-primary">Alterar</a>
+								<a class="delete btn btn-sm btn-danger">Excluir</a>							
+							</div>
+						</td>
+					</tr>
+				</tbody>
+				</table>
+			</div>
+		<div class="panel-footer">
+			<a class="btn btn-sm btn-sucess" th:href="@{/adicionar/}">Adicionar</a>
+		</div>
+		</div>
+	</div>
+</body>
+</html>

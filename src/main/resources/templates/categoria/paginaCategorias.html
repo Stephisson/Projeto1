@@ -28,8 +28,8 @@
 						<td th:text="${cat.nome}"></td>
 						<td>
 							<div class="btn-group pull-right">
-								<a class="btn btn-sm btn-primary">Editar</a>
-								<a class="delete btn btn-sm btn-danger">Excluir</a>
+								<a class="btn btn-sm btn-primary" th:href="@{/alterarCategoria/{id}(id=${cat.id})}">Alterar</a>
+								<a class="delete btn btn-sm btn-danger" th:href="@{/excluir/{id}(id=${cat.id})}">Excluir</a>
 							</div>
 						</td>
 					</tr>		
