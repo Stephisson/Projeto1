@@ -33,11 +33,11 @@
 						<td th:text="${curs.nome}"></td>
 						<td th:text="${curs.descricao}"></td>
 						<td th:text="${'R$: ' + curs.preco}"></td>
-						<td><span th:each=" cat : ${curs.categorias}" th:text="${' ' + cat.no me + ' / '}"></span></td>
+						<td><span th:each=" cat : ${curs.categorias}" th:text="${' ' + cat.nome + ' / '}"></span></td>
 						<td>
 							<div class="btn-group pull-right">
-								<a class="btn btn-sm btn-primary">Alterar</a>
-								<a class="delete btn btn-sm btn-danger">Excluir</a>							
+								<a class="btn btn-sm btn-primary" th:href="@{/curso/alterarCurso/{id}(id=${curs.id})}">Alterar</a>
+								<a class="delete btn btn-sm btn-danger" th:href="@{/curso/excluirCurso/{id}(id=${curs.id})}">Excluir</a>							
 							</div>
 						</td>
 					</tr>
@@ -45,7 +45,7 @@
 				</table>
 			</div>
 		<div class="panel-footer">
-			<a class="btn btn-sm btn-sucess" th:href="@{/adicionar/}">Adicionar</a>
+			<a class="btn btn-sm btn-success" th:href="@{/curso/adicionarCurso/}">Adicionar</a>
 		</div>
 		</div>
 	</div>

@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Cursos</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+	<div class="container">
+		<div class="panel-heading" align="center">
+			<strong>Cadastro de Cursos</strong>
+		</div>
+		<div>
+			<form class="form-horizontal" th:object="${curso}" th:action="@{/curso/salvarCurso}" method="POST" style="margin: 10px">
+				<div class="form-group">
+					<fieldset>
+						<div class="form-group row">
+							<label>Nome</label>
+							<input type="text" class="form-control input-sm" th:field="*{nome}" autofocus="autofocus" placeholder="Nome do Curso" maxlength="50"/>
+							<label>Descrição</label>
+							<input type="text" class="form-control input-sm" th:field="*{descricao}" autofocus="autofocus" placeholder="Descrição do Curso" maxlength="100"/>
+							<label>Preço</label>
+							<input type="number" class="form-control input-sm" th:field="*{preco}" autofocus="autofocus" placeholder="Preço do Curso" maxlength="10"/>
+							<label>Categoria</label>
+							<select class="custom-select" th:field="*{categorias}">
+							<option value="">Selecione a categoria</option>
+							<option th:each="cat : ${categorias}" th:value="${cat.id}" th:text="${cat.nome}"></option>
+							</select>
+						</div>
+					</fieldset>
+				</div>
+				<div align="center">
+					<button type="submit" class="btn btn-sm btn-primary">Salvar</button>
+				<a th:href="@{/curso/listarCurso}" class="btn btn-sm btn-default">Cancelar</a>
+				</div>
+			</form>
+		</div>
+	</div>
 
 </body>
 </html>
